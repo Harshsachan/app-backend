@@ -1,0 +1,10 @@
+Branch - 1-adding-dependency 
+
+        - installing MongoDb (Database) , TypeOrm (ORM library) , Graphql (A Query Langauage)  
+            *********************
+           npm install mongodb mongoose typeorm @nestjs/typeorm @nestjs/graphql graphql-tools graphql apollo-server-express
+            *********************
+        
+        - import Graphql in app.module.ts import section 
+        - Then create entities then resolver then service  to test our app 
+        
