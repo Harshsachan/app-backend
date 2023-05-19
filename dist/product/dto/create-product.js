@@ -9,59 +9,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.productDetails = void 0;
+exports.CreateProductInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
+const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
-let productDetails = class productDetails {
+const PrimaryGeneratedColumn_1 = require("typeorm/decorator/columns/PrimaryGeneratedColumn");
+let CreateProductInput = class CreateProductInput {
 };
 __decorate([
-    (0, typeorm_1.ObjectIdColumn)(),
-    __metadata("design:type", String)
-], productDetails.prototype, "_id", void 0);
-__decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, PrimaryGeneratedColumn_1.PrimaryGeneratedColumn)(),
     (0, typeorm_1.Index)({ unique: true }),
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
-], productDetails.prototype, "id", void 0);
+], CreateProductInput.prototype, "id", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(type => graphql_1.ID),
     __metadata("design:type", String)
-], productDetails.prototype, "product_id", void 0);
+], CreateProductInput.prototype, "product_id", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], productDetails.prototype, "name", void 0);
+], CreateProductInput.prototype, "name", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], productDetails.prototype, "company", void 0);
+], CreateProductInput.prototype, "company", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], productDetails.prototype, "description", void 0);
+], CreateProductInput.prototype, "description", void 0);
 __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
-], productDetails.prototype, "createdAt", void 0);
+], CreateProductInput.prototype, "createdAt", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
-], productDetails.prototype, "price", void 0);
+], CreateProductInput.prototype, "price", void 0);
 __decorate([
+    (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], productDetails.prototype, "seller", void 0);
-productDetails = __decorate([
-    (0, typeorm_1.Entity)(),
-    (0, graphql_1.ObjectType)()
-], productDetails);
-exports.productDetails = productDetails;
-//# sourceMappingURL=product.entity.js.map
+], CreateProductInput.prototype, "seller", void 0);
+CreateProductInput = __decorate([
+    (0, graphql_1.InputType)()
+], CreateProductInput);
+exports.CreateProductInput = CreateProductInput;
+//# sourceMappingURL=create-product.js.map

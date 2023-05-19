@@ -1,5 +1,4 @@
-export declare class productDetails {
-    _id: string;
+export declare class CreateProductInput {
     id: number;
     product_id: string;
     name: string;
