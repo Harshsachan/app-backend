@@ -1,5 +1,5 @@
 import { Repository } from "typeorm";
-import { CreateProductInput } from "./dto/create-product";
+import { CreateProductInput } from "src/product/dto/create-product";
 import { productDetails } from "./entities/product.entity";
 export declare class ProductService {
     private productDetailsRepositry;
