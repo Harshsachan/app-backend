@@ -13,13 +13,24 @@ type productDetails {
   seller: String!
 }
 
+type OrderDetails {
+  id: Int!
+  name: String!
+  company: String!
+  price: Int!
+  seller: String!
+}
+
 type Query {
   product: productDetails!
   findAllProduct: [productDetails!]!
+  findAllOrder: [OrderDetails!]!
+  findOrderById(id: Int!): OrderDetails!
 }
 
 type Mutation {
   createProduct(createProduct: CreateProductInput!): productDetails!
+  createNewOrder(createOrderInput: CreateOrderInput!): OrderDetails!
 }
 
 input CreateProductInput {
@@ -29,6 +40,14 @@ input CreateProductInput {
   company: String!
   description: String!
   createdAt: String
+  price: Int!
+  seller: String!
+}
+
+input CreateOrderInput {
+  id: Int!
+  name: String!
+  company: String!
   price: Int!
   seller: String!
 }

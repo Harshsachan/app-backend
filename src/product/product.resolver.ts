@@ -1,5 +1,4 @@
 import { Resolver,Query, Mutation, Args } from "@nestjs/graphql";
-import { query } from "express";
 import { CreateProductInput } from "./dto/create-product";
 import { productDetails } from "./entities/product.entity";
 import { ProductService } from "./product.service";
