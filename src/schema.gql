@@ -8,11 +8,27 @@ type productDetails {
   name: String!
   company: String!
   description: String!
-  createdAt: String!
+  createdAt: String
   price: Int!
   seller: String!
 }
 
 type Query {
   product: productDetails!
+  findAllProduct: [productDetails!]!
+}
+
+type Mutation {
+  createProduct(createProduct: CreateProductInput!): productDetails!
+}
+
+input CreateProductInput {
+  id: Int!
+  product_id: ID!
+  name: String!
+  company: String!
+  description: String!
+  createdAt: String
+  price: Int!
+  seller: String!
 }

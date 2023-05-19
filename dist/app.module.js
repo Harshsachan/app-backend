@@ -9,24 +9,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const product_module_1 = require("./product/product.module");
 const apollo_1 = require("@nestjs/apollo");
 const path_1 = require("path");
+const typeorm_1 = require("@nestjs/typeorm");
+const product_module_1 = require("./product/product.module");
+const product_entity_1 = require("./product/entities/product.entity");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'mongodb',
+                url: 'mongodb+srv://harshitsachan:8400370072@sneaker.svqyffb.mongodb.net/?retryWrites=true&w=majority',
+                synchronize: true,
+                useUnifiedTopology: true,
+                entities: [product_entity_1.productDetails]
+            }),
             graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
                 autoSchemaFile: (0, path_1.join)(process.cwd(), 'src/schema.gql'),
             }),
             product_module_1.ProductModule
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        controllers: [],
+        providers: [],
     })
 ], AppModule);
 exports.AppModule = AppModule;

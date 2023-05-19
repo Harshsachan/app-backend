@@ -7,4 +7,5 @@ Branch - 1-adding-dependency
         
         - import Graphql in app.module.ts import section 
         - Then create entities then resolver then service  to test our app 
+        - Then set up MongoDb and TypeOrm in app.module.ts
         

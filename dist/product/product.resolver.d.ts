@@ -1,4 +1,9 @@
+import { CreateProductInput } from "./dto/create-product";
+import { productDetails } from "./entities/product.entity";
+import { ProductService } from "./product.service";
 export declare class ProductResolver {
+    private productService;
+    constructor(productService: ProductService);
     product(): {
         id: number;
         product_id: string;
@@ -9,4 +14,6 @@ export declare class ProductResolver {
         seller: string;
         createdAt: string;
     };
+    findAllProduct(): Promise<productDetails[]>;
+    createProduct(createProduct: CreateProductInput): Promise<productDetails>;
 }

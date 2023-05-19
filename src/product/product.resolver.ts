@@ -1,15 +1,17 @@
-import { Resolver,Query } from "@nestjs/graphql";
+import { Resolver,Query, Mutation, Args } from "@nestjs/graphql";
 import { query } from "express";
+import { CreateProductInput } from "./dto/create-product";
 import { productDetails } from "./entities/product.entity";
+import { ProductService } from "./product.service";
 
 @Resolver(of=>productDetails)
 export class ProductResolver{
-   // constructor(private productService: ProductService){}
+    constructor(private productService: ProductService){}
 
     @Query(returns=>productDetails)
     product(){
         return {
-            id:7,
+           id:9,
            product_id: 'yure012',
             company:'Nike',
             name: 'Jorden',
@@ -18,6 +20,16 @@ export class ProductResolver{
             seller:'Sneaker Head',
             createdAt:(new Date()).toISOString(),
         };
+    }
+
+    @Query(returns=>[productDetails])
+    findAllProduct():Promise<productDetails[]>{
+            return this.productService.findAllProduct();
+    }
+
+    @Mutation(returns=>productDetails)
+    createProduct(@Args('createProduct') createProduct:CreateProductInput):Promise<productDetails>{
+        return this.productService.createNewProduct(createProduct);
     }
     
 }
