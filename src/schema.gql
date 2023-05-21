@@ -39,6 +39,7 @@ type Query {
   findAllProduct: [productDetails!]!
   findAllOrder: [OrderDetails!]!
   findOrderById(id: Int!): OrderDetails!
+  getUserDetailsByMail(email: String!): userDetails
 }
 
 type Mutation {

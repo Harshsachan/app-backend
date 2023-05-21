@@ -21,10 +21,20 @@ let UserResolver = class UserResolver {
     constructor(userService) {
         this.userService = userService;
     }
+    getUserDetailsByMail(email) {
+        return this.userService.getUserDetailsByMail(email);
+    }
     createUser(createUserInput) {
         return this.userService.createUser(createUserInput);
     }
 };
+__decorate([
+    (0, graphql_1.Query)(returns => user_entity_1.userDetails, { nullable: true }),
+    __param(0, (0, graphql_1.Args)('email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "getUserDetailsByMail", null);
 __decorate([
     (0, graphql_1.Mutation)(returns => user_entity_1.userDetails),
     __param(0, (0, graphql_1.Args)('createUserInput')),
