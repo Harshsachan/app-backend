@@ -37,7 +37,7 @@ __decorate([
     __metadata("design:type", String)
 ], userDetails.prototype, "l_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
+    (0, typeorm_1.Column)({ unique: true }),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], userDetails.prototype, "email", void 0);

@@ -21,7 +21,7 @@ export class userDetails {
   @Field()
   l_name: string;
 
-  @Column()
+  @Column({unique:true})
   @Field()
   email: string;
 

@@ -21,7 +21,15 @@ let UserService = class UserService {
     constructor(userDetailsRepositry) {
         this.userDetailsRepositry = userDetailsRepositry;
     }
-    createUser(createUserInput) {
+    async getUserDetailsByMail(email) {
+        return this.userDetailsRepositry.findOne({ where: { email } });
+    }
+    async createUser(createUserInput) {
+        const { email } = createUserInput;
+        const existingUser = await this.userDetailsRepositry.findOne({ where: { email } });
+        if (existingUser) {
+            throw new common_1.HttpException("User with this email already exists ", common_1.HttpStatus.FORBIDDEN);
+        }
         const newUser = this.userDetailsRepositry.create(createUserInput);
         return this.userDetailsRepositry.save(newUser);
     }
