@@ -16,6 +16,8 @@ const product_module_1 = require("./product/product.module");
 const product_entity_1 = require("./product/entities/product.entity");
 const order_module_1 = require("./order/order.module");
 const order_entity_1 = require("./order/entities/order.entity");
+const user_module_1 = require("./user/user.module");
+const user_entity_1 = require("./user/entities/user.entity");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -26,14 +28,15 @@ AppModule = __decorate([
                 url: 'mongodb+srv://harshitsachan:8400370072@sneaker.svqyffb.mongodb.net/?retryWrites=true&w=majority',
                 synchronize: true,
                 useUnifiedTopology: true,
-                entities: [product_entity_1.productDetails, order_entity_1.OrderDetails]
+                entities: [product_entity_1.productDetails, order_entity_1.OrderDetails, user_entity_1.userDetails]
             }),
             graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
                 autoSchemaFile: (0, path_1.join)(process.cwd(), 'src/schema.gql'),
             }),
             product_module_1.ProductModule,
-            order_module_1.OrderModule
+            order_module_1.OrderModule,
+            user_module_1.UserModule
         ],
         controllers: [],
         providers: [],

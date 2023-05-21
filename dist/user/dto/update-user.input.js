@@ -9,17 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UpdateOrderInput = void 0;
-const create_order_input_1 = require("./create-order.input");
+exports.UpdateUserInput = void 0;
+const create_user_input_1 = require("./create-user.input");
 const graphql_1 = require("@nestjs/graphql");
-let UpdateOrderInput = class UpdateOrderInput extends (0, graphql_1.PartialType)(create_order_input_1.CreateOrderInput) {
+let UpdateUserInput = class UpdateUserInput extends (0, graphql_1.PartialType)(create_user_input_1.CreateUserInput) {
 };
 __decorate([
     (0, graphql_1.Field)(() => graphql_1.Int),
     __metadata("design:type", Number)
-], UpdateOrderInput.prototype, "id", void 0);
-UpdateOrderInput = __decorate([
+], UpdateUserInput.prototype, "id", void 0);
+UpdateUserInput = __decorate([
     (0, graphql_1.InputType)()
-], UpdateOrderInput);
-exports.UpdateOrderInput = UpdateOrderInput;
-//# sourceMappingURL=update-order.input.js.map
+], UpdateUserInput);
+exports.UpdateUserInput = UpdateUserInput;
+//# sourceMappingURL=update-user.input.js.map

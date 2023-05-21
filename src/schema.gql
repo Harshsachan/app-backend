@@ -21,6 +21,19 @@ type OrderDetails {
   seller: String!
 }
 
+type userDetails {
+  f_name: String!
+  l_name: String!
+  email: String!
+  number: String!
+  house_no: String!
+  street: String!
+  area: String!
+  city: String!
+  state: String!
+  pincode: Int!
+}
+
 type Query {
   product: productDetails!
   findAllProduct: [productDetails!]!
@@ -31,6 +44,7 @@ type Query {
 type Mutation {
   createProduct(createProduct: CreateProductInput!): productDetails!
   createNewOrder(createOrderInput: CreateOrderInput!): OrderDetails!
+  createUser(createUserInput: CreateUserInput!): userDetails!
 }
 
 input CreateProductInput {
@@ -50,4 +64,17 @@ input CreateOrderInput {
   company: String!
   price: Int!
   seller: String!
+}
+
+input CreateUserInput {
+  f_name: String!
+  l_name: String!
+  email: String!
+  number: String!
+  house_no: String!
+  street: String!
+  area: String!
+  city: String!
+  state: String!
+  pincode: Int!
 }
