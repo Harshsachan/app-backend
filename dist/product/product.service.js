@@ -21,7 +21,7 @@ let ProductService = class ProductService {
     constructor(productDetailsRepositry) {
         this.productDetailsRepositry = productDetailsRepositry;
     }
-    createNewProduct(createNewProductInput) {
+    async createNewProduct(createNewProductInput) {
         const newProduct = this.productDetailsRepositry.create(createNewProductInput);
         return this.productDetailsRepositry.save(newProduct);
     }

@@ -22,6 +22,7 @@ type OrderDetails {
 }
 
 type userDetails {
+  uhid: String!
   f_name: String!
   l_name: String!
   email: String!
@@ -32,6 +33,11 @@ type userDetails {
   city: String!
   state: String!
   pincode: Int!
+}
+
+type authDetails {
+  email: String!
+  password: String!
 }
 
 type Query {
@@ -46,6 +52,8 @@ type Mutation {
   createProduct(createProduct: CreateProductInput!): productDetails!
   createNewOrder(createOrderInput: CreateOrderInput!): OrderDetails!
   createUser(createUserInput: CreateUserInput!): userDetails!
+  signUp(authDto: AuthDto!): authDetails!
+  logIn(authDto: AuthDto!): userDetails!
 }
 
 input CreateProductInput {
@@ -78,4 +86,9 @@ input CreateUserInput {
   city: String!
   state: String!
   pincode: Int!
+}
+
+input AuthDto {
+  email: String!
+  password: String!
 }

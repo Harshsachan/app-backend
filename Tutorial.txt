@@ -9,3 +9,10 @@ Branch - 1-adding-dependency
         - Then create entities then resolver then service  to test our app 
         - Then set up MongoDb and TypeOrm in app.module.ts
         
+
+
+
+        // Authentication Logic
+        -  Created a Seprate Database for user_login_details {email, pasword}
+        - Structure for Db is in entity  and making sure that we receive correct data from frontend it is in dto 
+        - Strategy for jwt 
