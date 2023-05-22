@@ -24,6 +24,7 @@ __decorate([
 ], userDetails.prototype, "_id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true, nullable: false }),
+    (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], userDetails.prototype, "uhid", void 0);
 __decorate([

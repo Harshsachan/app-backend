@@ -8,7 +8,7 @@ import { productDetails } from "./entities/product.entity";
 export class ProductService{
     constructor(@InjectRepository(productDetails) private productDetailsRepositry:Repository<productDetails> ){}
 
-    createNewProduct(createNewProductInput : CreateProductInput):Promise<productDetails>{
+    async createNewProduct(createNewProductInput : CreateProductInput):Promise<productDetails>{
         const newProduct=this.productDetailsRepositry.create(createNewProductInput)
         
         return this.productDetailsRepositry.save(newProduct);

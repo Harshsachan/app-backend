@@ -10,6 +10,8 @@ import { OrderModule } from './order/order.module';
 import { OrderDetails } from './order/entities/order.entity';
 import { UserModule } from './user/user.module';
 import { userDetails } from './user/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
+import { authDetails } from './auth/entites/auth.entity';
 
 @Module({
   imports: [
@@ -18,7 +20,7 @@ import { userDetails } from './user/entities/user.entity';
       url:'mongodb+srv://harshitsachan:8400370072@sneaker.svqyffb.mongodb.net/?retryWrites=true&w=majority',
       synchronize:true,
       useUnifiedTopology:true,
-      entities:[productDetails,OrderDetails,userDetails]
+      entities:[productDetails,OrderDetails,userDetails,authDetails]
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
@@ -26,7 +28,8 @@ import { userDetails } from './user/entities/user.entity';
     }),
     ProductModule,
     OrderModule,
-    UserModule
+    UserModule,
+    AuthModule
   ],
   controllers: [],
   providers: [],

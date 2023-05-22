@@ -9,6 +9,7 @@ export class userDetails {
   _id: string;
 
   @Column({ unique: true ,nullable:false})
+  @Field()
   uhid: string;
   
   
