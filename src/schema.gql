@@ -50,6 +50,7 @@ type authDetails {
 type Query {
   product: productDetails!
   findAllProduct: [productDetails!]!
+  findProductsByCategory(category: Category!): [productDetails!]!
   findAllOrder: [OrderDetails!]!
   findOrderById(id: Int!): OrderDetails!
   getUserDetailsByMail(email: String!): userDetails

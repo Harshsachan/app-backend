@@ -14,6 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
+const category_enum_1 = require("./category.enum");
 const create_product_1 = require("./dto/create-product");
 const product_entity_1 = require("./entities/product.entity");
 const product_service_1 = require("./product.service");
@@ -39,6 +40,9 @@ let ProductResolver = class ProductResolver {
     createProduct(createProduct) {
         return this.productService.createNewProduct(createProduct);
     }
+    async findProductsByCategory(category) {
+        return this.productService.findProductByCategory(category);
+    }
 };
 __decorate([
     (0, graphql_1.Query)(returns => product_entity_1.productDetails),
@@ -59,6 +63,13 @@ __decorate([
     __metadata("design:paramtypes", [create_product_1.CreateProductInput]),
     __metadata("design:returntype", Promise)
 ], ProductResolver.prototype, "createProduct", null);
+__decorate([
+    (0, graphql_1.Query)(() => [product_entity_1.productDetails]),
+    __param(0, (0, graphql_1.Args)('category', { type: () => category_enum_1.Category })),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ProductResolver.prototype, "findProductsByCategory", null);
 ProductResolver = __decorate([
     (0, graphql_1.Resolver)(of => product_entity_1.productDetails),
     __metadata("design:paramtypes", [product_service_1.ProductService])
