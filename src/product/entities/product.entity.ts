@@ -1,6 +1,9 @@
 import { Field, ID, Int, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
 
+
+import { Category } from "../category.enum";
+
 @Entity()
 // @ObjectType('obj.name') can be used to import this type any where using obj.name
 @ObjectType()
@@ -14,11 +17,6 @@ export class productDetails{
     id:number;
 
     @Column()
-    @Field(type=> ID)
-    product_id:string;
-
-
-    @Column()
     @Field()
     name: string;
 
@@ -29,6 +27,10 @@ export class productDetails{
     @Column()
     @Field()
     description: string;
+
+    @Column()
+    @Field()
+    image: string;
     
     @Column({nullable:true})
     @Field({nullable:true})
@@ -41,4 +43,8 @@ export class productDetails{
     @Column()
     @Field()
     seller:string;
+
+    @Column()
+    @Field(()=>Category)
+    category:Category;
 }

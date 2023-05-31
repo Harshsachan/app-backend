@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.productDetails = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("typeorm");
+const category_enum_1 = require("../category.enum");
 let productDetails = class productDetails {
 };
 __decorate([
@@ -24,11 +25,6 @@ __decorate([
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
 ], productDetails.prototype, "id", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => graphql_1.ID),
-    __metadata("design:type", String)
-], productDetails.prototype, "product_id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
@@ -45,6 +41,11 @@ __decorate([
     __metadata("design:type", String)
 ], productDetails.prototype, "description", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], productDetails.prototype, "image", void 0);
+__decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
@@ -59,6 +60,11 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], productDetails.prototype, "seller", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(() => category_enum_1.Category),
+    __metadata("design:type", String)
+], productDetails.prototype, "category", void 0);
 productDetails = __decorate([
     (0, typeorm_1.Entity)(),
     (0, graphql_1.ObjectType)()

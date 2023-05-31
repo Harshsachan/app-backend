@@ -14,6 +14,8 @@ const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
 const PrimaryGeneratedColumn_1 = require("typeorm/decorator/columns/PrimaryGeneratedColumn");
+const category_enum_1 = require("../category.enum");
+(0, graphql_1.registerEnumType)(category_enum_1.Category, { name: 'Category' });
 let CreateProductInput = class CreateProductInput {
 };
 __decorate([
@@ -22,12 +24,6 @@ __decorate([
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
 ], CreateProductInput.prototype, "id", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => graphql_1.ID),
-    __metadata("design:type", String)
-], CreateProductInput.prototype, "product_id", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)(),
@@ -47,6 +43,11 @@ __decorate([
     __metadata("design:type", String)
 ], CreateProductInput.prototype, "description", void 0);
 __decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], CreateProductInput.prototype, "image", void 0);
+__decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
@@ -63,6 +64,12 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], CreateProductInput.prototype, "seller", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(() => category_enum_1.Category),
+    __metadata("design:type", String)
+], CreateProductInput.prototype, "category", void 0);
 CreateProductInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateProductInput);

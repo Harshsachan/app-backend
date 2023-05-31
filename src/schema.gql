@@ -4,13 +4,20 @@
 
 type productDetails {
   id: Int!
-  product_id: ID!
   name: String!
   company: String!
   description: String!
+  image: String!
   createdAt: String
   price: Int!
   seller: String!
+  category: Category!
+}
+
+enum Category {
+  RECOMMENDED
+  POPULAR
+  RECENT
 }
 
 type OrderDetails {
@@ -58,13 +65,14 @@ type Mutation {
 
 input CreateProductInput {
   id: Int!
-  product_id: ID!
   name: String!
   company: String!
   description: String!
+  image: String!
   createdAt: String
   price: Int!
   seller: String!
+  category: Category!
 }
 
 input CreateOrderInput {

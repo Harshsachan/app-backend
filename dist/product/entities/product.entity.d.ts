@@ -1,11 +1,13 @@
+import { Category } from "../category.enum";
 export declare class productDetails {
     _id: string;
     id: number;
-    product_id: string;
     name: string;
     company: string;
     description: string;
+    image: string;
     createdAt: string;
     price: number;
     seller: string;
+    category: Category;
 }
