@@ -1,3 +1,4 @@
+import { Category } from "./category.enum";
 import { CreateProductInput } from "./dto/create-product";
 import { productDetails } from "./entities/product.entity";
 import { ProductService } from "./product.service";
@@ -16,4 +17,5 @@ export declare class ProductResolver {
     };
     findAllProduct(): Promise<productDetails[]>;
     createProduct(createProduct: CreateProductInput): Promise<productDetails>;
+    findProductsByCategory(category: Category): Promise<productDetails[]>;
 }

@@ -28,6 +28,9 @@ let ProductService = class ProductService {
     async findAllProduct() {
         return this.productDetailsRepositry.find();
     }
+    async findProductByCategory(category) {
+        return this.productDetailsRepositry.find({ where: { category } });
+    }
 };
 ProductService = __decorate([
     (0, common_1.Injectable)(),

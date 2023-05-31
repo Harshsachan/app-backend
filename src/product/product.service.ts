@@ -3,6 +3,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { CreateProductInput } from "src/product/dto/create-product";
 import { productDetails } from "./entities/product.entity";
+import { Category } from "./category.enum";
 
 @Injectable()
 export class ProductService{
@@ -16,5 +17,9 @@ export class ProductService{
 
     async findAllProduct():Promise<productDetails[]>{
         return this.productDetailsRepositry.find()
+    }
+
+    async findProductByCategory(category:Category):Promise<productDetails[]>{
+        return this.productDetailsRepositry.find({where:{category}});
     }
 }
