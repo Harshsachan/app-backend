@@ -20,27 +20,13 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
-], CreateOrderInput.prototype, "id", void 0);
+], CreateOrderInput.prototype, "product_id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    (0, class_validator_1.IsNotEmpty)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateOrderInput.prototype, "name", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateOrderInput.prototype, "company", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => graphql_1.Int),
-    __metadata("design:type", Number)
-], CreateOrderInput.prototype, "price", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], CreateOrderInput.prototype, "seller", void 0);
+], CreateOrderInput.prototype, "user_email", void 0);
 CreateOrderInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateOrderInput);

@@ -22,27 +22,12 @@ __decorate([
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
-], OrderDetails.prototype, "id", void 0);
+], OrderDetails.prototype, "product_id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], OrderDetails.prototype, "name", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], OrderDetails.prototype, "company", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => graphql_1.Int),
-    __metadata("design:type", Number)
-], OrderDetails.prototype, "price", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], OrderDetails.prototype, "seller", void 0);
+], OrderDetails.prototype, "user_email", void 0);
 OrderDetails = __decorate([
     (0, typeorm_1.Entity)(),
     (0, graphql_1.ObjectType)()

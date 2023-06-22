@@ -14,11 +14,15 @@ export class OrderService{
           return this.orderDetailsRepositry.save(newOrder);
       }
 
-      async findOrderById(id:number):Promise<OrderDetails>{
-        return this.orderDetailsRepositry.findOneOrFail({where:{id}});
+      findOrderByUserMail(user_email:string):Promise<OrderDetails[]>{
+        return this.orderDetailsRepositry.find({where:{user_email}})
       }
 
-      async findAllOrder():Promise<OrderDetails[]>{
-        return this.orderDetailsRepositry.find();
-      }
+      // async findOrderById(id:number):Promise<OrderDetails>{
+      //   return this.orderDetailsRepositry.findOneOrFail({where:{id}});
+      // }
+
+      // async findAllOrder():Promise<OrderDetails[]>{
+      //   return this.orderDetailsRepositry.find();
+      // }
 }

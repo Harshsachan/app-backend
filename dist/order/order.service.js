@@ -25,11 +25,8 @@ let OrderService = class OrderService {
         const newOrder = this.orderDetailsRepositry.create(createOrderInput);
         return this.orderDetailsRepositry.save(newOrder);
     }
-    async findOrderById(id) {
-        return this.orderDetailsRepositry.findOneOrFail({ where: { id } });
-    }
-    async findAllOrder() {
-        return this.orderDetailsRepositry.find();
+    findOrderByUserMail(user_email) {
+        return this.orderDetailsRepositry.find({ where: { user_email } });
     }
 };
 OrderService = __decorate([

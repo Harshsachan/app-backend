@@ -1,7 +1,4 @@
 export declare class CreateOrderInput {
-    id: number;
-    name: string;
-    company: string;
-    price: number;
-    seller: string;
+    product_id: number;
+    user_email: string;
 }

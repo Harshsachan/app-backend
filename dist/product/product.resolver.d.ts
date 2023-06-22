@@ -17,5 +17,6 @@ export declare class ProductResolver {
     };
     findAllProduct(): Promise<productDetails[]>;
     createProduct(createProduct: CreateProductInput): Promise<productDetails>;
+    findProductById(id: number): Promise<productDetails>;
     findProductsByCategory(category: Category): Promise<productDetails[]>;
 }

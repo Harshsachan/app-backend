@@ -1,4 +1,4 @@
-import { Resolver,Query, Mutation, Args } from "@nestjs/graphql";
+import { Resolver,Query, Mutation, Args, Int } from "@nestjs/graphql";
 import { Category } from "./category.enum";
 import { CreateProductInput } from "./dto/create-product";
 import { productDetails } from "./entities/product.entity";
@@ -32,10 +32,13 @@ export class ProductResolver{
         return this.productService.createNewProduct(createProduct);
     }
 
+    @Query(returns=>productDetails)
+    findProductById(@Args('id',{type:()=>Int}) id:number):Promise<productDetails>{
+        return this.productService.findProductById(id)
+    }
+
     @Query(() => [productDetails])
-    async findProductsByCategory(
-    @Args('category', { type: () => Category }) category: Category,
-        ): Promise<productDetails[]> {
+    async findProductsByCategory(@Args('category', { type: () => Category }) category: Category,): Promise<productDetails[]> {
             return this.productService.findProductByCategory(category);
     }
     
