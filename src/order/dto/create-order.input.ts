@@ -4,25 +4,15 @@ import { Column } from 'typeorm';
 
 @InputType()
 export class CreateOrderInput {
+
   @Column()
   @IsNotEmpty()
   @Field(type=>Int)
-  id:number;
+  product_id:number;
 
   @Column()
+  @IsNotEmpty()
   @Field()
-  name: string;
-
-  @Column()
-  @Field()
-  company: string;
-
-  @Column()
-  @Field(type=>Int)
-  price:number;
-
-  @Column()
-  @Field()
-  seller:string;
+  user_email:string;
   
 }

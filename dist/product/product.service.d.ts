@@ -8,4 +8,5 @@ export declare class ProductService {
     createNewProduct(createNewProductInput: CreateProductInput): Promise<productDetails>;
     findAllProduct(): Promise<productDetails[]>;
     findProductByCategory(category: Category): Promise<productDetails[]>;
+    findProductById(id: number): Promise<productDetails>;
 }

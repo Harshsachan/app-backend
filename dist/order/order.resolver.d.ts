@@ -4,7 +4,6 @@ import { OrderService } from "./order.service";
 export declare class OrderResolver {
     private orderService;
     constructor(orderService: OrderService);
-    findAllOrder(): Promise<OrderDetails[]>;
-    findOrderById(id: number): Promise<OrderDetails>;
+    findOrderByUserMail(user_email: string): Promise<OrderDetails[]>;
     createNewOrder(createOrderInput: CreateOrderInput): Promise<OrderDetails>;
 }

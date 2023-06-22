@@ -5,6 +5,5 @@ export declare class OrderService {
     private orderDetailsRepositry;
     constructor(orderDetailsRepositry: Repository<OrderDetails>);
     createNewOrder(createOrderInput: CreateOrderInput): Promise<OrderDetails>;
-    findOrderById(id: number): Promise<OrderDetails>;
-    findAllOrder(): Promise<OrderDetails[]>;
+    findOrderByUserMail(user_email: string): Promise<OrderDetails[]>;
 }

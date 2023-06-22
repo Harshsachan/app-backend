@@ -9,22 +9,9 @@ export class OrderDetails {
 
   @Column()
   @Field(type=>Int)
-  id:number;
+  product_id:number;
 
   @Column()
   @Field()
-  name: string;
-
-  @Column()
-  @Field()
-  company: string;
-
-  @Column()
-  @Field(type=>Int)
-  price:number;
-
-  @Column()
-  @Field()
-  seller:string;
-  
+  user_email:string;
 }

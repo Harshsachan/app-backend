@@ -22,4 +22,8 @@ export class ProductService{
     async findProductByCategory(category:Category):Promise<productDetails[]>{
         return this.productDetailsRepositry.find({where:{category}});
     }
+
+    async findProductById(id:number):Promise<productDetails>{
+        return this.productDetailsRepositry.findOneOrFail({where:{id}});
+    }
 }
