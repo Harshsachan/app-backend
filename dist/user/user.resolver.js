@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const create_user_input_1 = require("./dto/create-user.input");
+const update_user_input_1 = require("./dto/update-user.input");
 const user_entity_1 = require("./entities/user.entity");
 const user_service_1 = require("./user.service");
 let UserResolver = class UserResolver {
@@ -26,6 +27,9 @@ let UserResolver = class UserResolver {
     }
     createUser(createUserInput) {
         return this.userService.createUser(createUserInput);
+    }
+    updateUserInfo(updateUserInput) {
+        return this.userService.updateUserInfo(updateUserInput);
     }
 };
 __decorate([
@@ -42,6 +46,13 @@ __decorate([
     __metadata("design:paramtypes", [create_user_input_1.CreateUserInput]),
     __metadata("design:returntype", Promise)
 ], UserResolver.prototype, "createUser", null);
+__decorate([
+    (0, graphql_1.Mutation)(returns => user_entity_1.userDetails),
+    __param(0, (0, graphql_1.Args)('updateUserInput')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [update_user_input_1.UpdateUserInput]),
+    __metadata("design:returntype", Promise)
+], UserResolver.prototype, "updateUserInfo", null);
 UserResolver = __decorate([
     (0, graphql_1.Resolver)(of => user_entity_1.userDetails),
     __metadata("design:paramtypes", [user_service_1.UserService])

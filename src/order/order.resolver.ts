@@ -17,14 +17,19 @@ export class OrderResolver{
     //   return this.orderService.findOrderById(id);
     // }
 
-    @Query(returns=>[OrderDetails])
-    findOrderByUserMail(@Args('user_email') user_email:string):Promise<OrderDetails[]>{
-      return this.orderService.findOrderByUserMail(user_email);
-    }
-
     @Mutation(returns=>OrderDetails)
     createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<OrderDetails>{
       return this.orderService.createNewOrder(createOrderInput);
+    }
+//     @Mutation(returns => OrderDetails)
+//   async createNewOrder(@Args('createOrderInput') createOrderInput: CreateOrderInput,
+// ): Promise<OrderDetails> {
+//   return this.orderService.createNewOrder(createOrderInput);
+// }
+
+    @Query(returns=>[OrderDetails])
+    findOrderByUserMail(@Args('user_email') user_email:string):Promise<OrderDetails[]>{
+      return this.orderService.findOrderByUserMail(user_email);
     }
 
 }

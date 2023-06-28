@@ -45,7 +45,7 @@ __decorate([
 __decorate([
     (0, typeorm_1.Column)({ length: 20 }),
     (0, graphql_1.Field)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], userDetails.prototype, "number", void 0);
 __decorate([
     (0, typeorm_1.Column)(),

@@ -20,9 +20,9 @@ __decorate([
 ], OrderDetails.prototype, "_id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => graphql_1.Int),
-    __metadata("design:type", Number)
-], OrderDetails.prototype, "product_id", void 0);
+    (0, graphql_1.Field)(type => [graphql_1.Int]),
+    __metadata("design:type", Array)
+], OrderDetails.prototype, "product_ids", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),

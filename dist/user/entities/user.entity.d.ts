@@ -4,7 +4,7 @@ export declare class userDetails {
     f_name: string;
     l_name: string;
     email: string;
-    number: string;
+    number: number;
     house_no: string;
     street: string;
     area: string;
