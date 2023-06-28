@@ -21,7 +21,7 @@ enum Category {
 }
 
 type OrderDetails {
-  product_id: Int!
+  product_ids: [Int!]!
   user_email: String!
 }
 
@@ -30,7 +30,7 @@ type userDetails {
   f_name: String!
   l_name: String!
   email: String!
-  number: String!
+  number: Float!
   house_no: String!
   street: String!
   area: String!
@@ -57,6 +57,7 @@ type Mutation {
   createProduct(createProduct: CreateProductInput!): productDetails!
   createNewOrder(createOrderInput: CreateOrderInput!): OrderDetails!
   createUser(createUserInput: CreateUserInput!): userDetails!
+  updateUserInfo(updateUserInput: UpdateUserInput!): userDetails!
   signUp(authDto: AuthDto!): authDetails!
   logIn(authDto: AuthDto!): userDetails!
 }
@@ -74,7 +75,7 @@ input CreateProductInput {
 }
 
 input CreateOrderInput {
-  product_id: Int!
+  product_ids: [Int!]!
   user_email: String!
 }
 
@@ -82,13 +83,26 @@ input CreateUserInput {
   f_name: String!
   l_name: String!
   email: String!
-  number: String!
+  number: Float!
   house_no: String!
   street: String!
   area: String!
   city: String!
   state: String!
   pincode: Int!
+}
+
+input UpdateUserInput {
+  f_name: String
+  l_name: String
+  email: String!
+  number: Float
+  house_no: String
+  street: String
+  area: String
+  city: String
+  state: String
+  pincode: Float
 }
 
 input AuthDto {

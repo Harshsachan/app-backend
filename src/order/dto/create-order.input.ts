@@ -6,9 +6,9 @@ import { Column } from 'typeorm';
 export class CreateOrderInput {
 
   @Column()
+  @Field(type => [Int])
   @IsNotEmpty()
-  @Field(type=>Int)
-  product_id:number;
+  product_ids: number[];
 
   @Column()
   @IsNotEmpty()

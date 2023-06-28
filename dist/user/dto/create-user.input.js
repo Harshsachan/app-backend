@@ -42,7 +42,7 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, typeorm_1.Column)({ length: 20 }),
     (0, graphql_1.Field)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], CreateUserInput.prototype, "number", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),

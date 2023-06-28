@@ -8,8 +8,8 @@ export class OrderDetails {
   _id: string;
 
   @Column()
-  @Field(type=>Int)
-  product_id:number;
+  @Field(type => [Int])
+  product_ids: number[];
 
   @Column()
   @Field()

@@ -2,6 +2,7 @@ import { Injectable,HttpStatus, HttpException, ForbiddenException } from "@nestj
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { CreateUserInput } from "./dto/create-user.input";
+import { UpdateUserInput } from "./dto/update-user.input";
 import { userDetails } from "./entities/user.entity";
 
 @Injectable()
@@ -23,5 +24,16 @@ export class UserService{
     }
     const newUser = this.userDetailsRepositry.create(createUserInput)
     return this.userDetailsRepositry.save(newUser);
+  }
+
+  async updateUserInfo(updateUserInput:UpdateUserInput):Promise<userDetails>{
+    const { email, ...updateData } = updateUserInput;
+    const user= await this.userDetailsRepositry.findOne({where:{email}}) ;
+    if (!user) {
+      throw new Error(`User with email ${email} not found`);
+    }
+    Object.assign(user, updateData);
+
+    return this.userDetailsRepositry.save(user);
   }
 }

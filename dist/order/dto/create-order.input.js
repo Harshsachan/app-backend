@@ -17,10 +17,10 @@ let CreateOrderInput = class CreateOrderInput {
 };
 __decorate([
     (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => [graphql_1.Int]),
     (0, class_validator_1.IsNotEmpty)(),
-    (0, graphql_1.Field)(type => graphql_1.Int),
-    __metadata("design:type", Number)
-], CreateOrderInput.prototype, "product_id", void 0);
+    __metadata("design:type", Array)
+], CreateOrderInput.prototype, "product_ids", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     (0, class_validator_1.IsNotEmpty)(),

@@ -28,7 +28,7 @@ export class CreateUserInput {
   @IsNotEmpty()
   @Column({ length: 20 })
   @Field()
-  number :string;
+  number :number;
   
   @IsNotEmpty()
   @Column()

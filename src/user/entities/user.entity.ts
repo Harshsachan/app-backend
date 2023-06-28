@@ -28,7 +28,7 @@ export class userDetails {
 
   @Column({ length: 20 })
   @Field()
-  number: string;
+  number: number;
 
   @Column()
   @Field()

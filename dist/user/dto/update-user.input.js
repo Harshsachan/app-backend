@@ -12,12 +12,63 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateUserInput = void 0;
 const create_user_input_1 = require("./create-user.input");
 const graphql_1 = require("@nestjs/graphql");
+const class_validator_1 = require("class-validator");
+const typeorm_1 = require("typeorm");
 let UpdateUserInput = class UpdateUserInput extends (0, graphql_1.PartialType)(create_user_input_1.CreateUserInput) {
 };
 __decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int),
+    (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "email", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "f_name", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "l_name", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.Column)({ length: 20 }),
+    (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
-], UpdateUserInput.prototype, "id", void 0);
+], UpdateUserInput.prototype, "number", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "house_no", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "street", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "area", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "city", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], UpdateUserInput.prototype, "state", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Number)
+], UpdateUserInput.prototype, "pincode", void 0);
 UpdateUserInput = __decorate([
     (0, graphql_1.InputType)()
 ], UpdateUserInput);

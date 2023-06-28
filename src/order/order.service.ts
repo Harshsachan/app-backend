@@ -14,6 +14,20 @@ export class OrderService{
           return this.orderDetailsRepositry.save(newOrder);
       }
 
+      // async createNewOrder(createOrderInput: CreateOrderInput): Promise<OrderDetails> {
+      //   const { user_email, product_ids } = createOrderInput;
+      
+      //   const newOrders = product_ids.map(productId =>
+      //     this.orderDetailsRepositry.create({
+      //       user_email,
+      //       product_id: productId,
+      //     }),
+      //   );
+      
+      //   const savedOrders = await this.orderDetailsRepositry.save(newOrders);
+      //   return savedOrders[0];
+      // }
+
       findOrderByUserMail(user_email:string):Promise<OrderDetails[]>{
         return this.orderDetailsRepositry.find({where:{user_email}})
       }

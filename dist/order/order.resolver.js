@@ -21,20 +21,13 @@ let OrderResolver = class OrderResolver {
     constructor(orderService) {
         this.orderService = orderService;
     }
-    findOrderByUserMail(user_email) {
-        return this.orderService.findOrderByUserMail(user_email);
-    }
     createNewOrder(createOrderInput) {
         return this.orderService.createNewOrder(createOrderInput);
     }
+    findOrderByUserMail(user_email) {
+        return this.orderService.findOrderByUserMail(user_email);
+    }
 };
-__decorate([
-    (0, graphql_1.Query)(returns => [order_entity_1.OrderDetails]),
-    __param(0, (0, graphql_1.Args)('user_email')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], OrderResolver.prototype, "findOrderByUserMail", null);
 __decorate([
     (0, graphql_1.Mutation)(returns => order_entity_1.OrderDetails),
     __param(0, (0, graphql_1.Args)('createOrderInput')),
@@ -42,6 +35,13 @@ __decorate([
     __metadata("design:paramtypes", [create_order_input_1.CreateOrderInput]),
     __metadata("design:returntype", Promise)
 ], OrderResolver.prototype, "createNewOrder", null);
+__decorate([
+    (0, graphql_1.Query)(returns => [order_entity_1.OrderDetails]),
+    __param(0, (0, graphql_1.Args)('user_email')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], OrderResolver.prototype, "findOrderByUserMail", null);
 OrderResolver = __decorate([
     (0, graphql_1.Resolver)(of => order_entity_1.OrderDetails),
     __metadata("design:paramtypes", [order_service_1.OrderService])
