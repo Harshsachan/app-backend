@@ -8,11 +8,25 @@ import { OrderDetails } from "./entities/order.entity";
 export class OrderService{
  constructor(@InjectRepository(OrderDetails) private orderDetailsRepositry:Repository<OrderDetails>) {}
 
-      createNewOrder(createOrderInput:CreateOrderInput):Promise<OrderDetails>{
-          const newOrder = this.orderDetailsRepositry.create(createOrderInput)
+      // createNewOrder(createOrderInput:CreateOrderInput):Promise<OrderDetails>{
+      //     const newOrder = this.orderDetailsRepositry.create(createOrderInput)
 
-          return this.orderDetailsRepositry.save(newOrder);
-      }
+      //     return this.orderDetailsRepositry.save(newOrder);
+      // }
+      async createNewOrder(createOrderInput:CreateOrderInput):Promise<void>{
+        try {
+          const newOrder = this.orderDetailsRepositry.create(createOrderInput)
+          await this.orderDetailsRepositry.save(newOrder);
+
+        } catch (error) {
+          throw new Error("HA HA")
+        }
+        
+        
+        
+
+        
+    }
 
       // async createNewOrder(createOrderInput: CreateOrderInput): Promise<OrderDetails> {
       //   const { user_email, product_ids } = createOrderInput;

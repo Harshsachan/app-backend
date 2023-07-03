@@ -21,9 +21,14 @@ let OrderService = class OrderService {
     constructor(orderDetailsRepositry) {
         this.orderDetailsRepositry = orderDetailsRepositry;
     }
-    createNewOrder(createOrderInput) {
-        const newOrder = this.orderDetailsRepositry.create(createOrderInput);
-        return this.orderDetailsRepositry.save(newOrder);
+    async createNewOrder(createOrderInput) {
+        try {
+            const newOrder = this.orderDetailsRepositry.create(createOrderInput);
+            await this.orderDetailsRepositry.save(newOrder);
+        }
+        catch (error) {
+            throw new Error("HA HA");
+        }
     }
     findOrderByUserMail(user_email) {
         return this.orderDetailsRepositry.find({ where: { user_email } });

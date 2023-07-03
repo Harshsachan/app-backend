@@ -21,15 +21,21 @@ let OrderResolver = class OrderResolver {
     constructor(orderService) {
         this.orderService = orderService;
     }
-    createNewOrder(createOrderInput) {
-        return this.orderService.createNewOrder(createOrderInput);
+    async createNewOrder(createOrderInput) {
+        try {
+            await this.orderService.createNewOrder(createOrderInput);
+            return ("Order Placed");
+        }
+        catch (e) {
+            throw new Error("HA HA");
+        }
     }
     findOrderByUserMail(user_email) {
         return this.orderService.findOrderByUserMail(user_email);
     }
 };
 __decorate([
-    (0, graphql_1.Mutation)(returns => order_entity_1.OrderDetails),
+    (0, graphql_1.Mutation)(returns => String),
     __param(0, (0, graphql_1.Args)('createOrderInput')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_order_input_1.CreateOrderInput]),

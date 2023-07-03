@@ -17,10 +17,21 @@ export class OrderResolver{
     //   return this.orderService.findOrderById(id);
     // }
 
-    @Mutation(returns=>OrderDetails)
-    createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<OrderDetails>{
-      return this.orderService.createNewOrder(createOrderInput);
+    // @Mutation(returns=>OrderDetails)
+    // createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<OrderDetails>{
+    //   return this.orderService.createNewOrder(createOrderInput);
+    // }
+    @Mutation(returns=>String)
+    async createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<string>{
+      try{
+         await this.orderService.createNewOrder(createOrderInput);
+         return("Order Placed");
+       }
+       catch(e){
+         throw new Error("HA HA");
+       }
     }
+
 //     @Mutation(returns => OrderDetails)
 //   async createNewOrder(@Args('createOrderInput') createOrderInput: CreateOrderInput,
 // ): Promise<OrderDetails> {

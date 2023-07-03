@@ -55,7 +55,7 @@ type Query {
 
 type Mutation {
   createProduct(createProduct: CreateProductInput!): productDetails!
-  createNewOrder(createOrderInput: CreateOrderInput!): OrderDetails!
+  createNewOrder(createOrderInput: CreateOrderInput!): String!
   createUser(createUserInput: CreateUserInput!): userDetails!
   updateUserInfo(updateUserInput: UpdateUserInput!): userDetails!
   signUp(authDto: AuthDto!): authDetails!
