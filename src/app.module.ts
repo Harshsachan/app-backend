@@ -12,6 +12,8 @@ import { UserModule } from './user/user.module';
 import { userDetails } from './user/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { authDetails } from './auth/entites/auth.entity';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -24,14 +26,16 @@ import { authDetails } from './auth/entites/auth.entity';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
+      autoSchemaFile:true,
+      playground:true,
+      //autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
     }),
     ProductModule,
     OrderModule,
     UserModule,
     AuthModule
   ],
-  controllers: [],
-  providers: [],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
