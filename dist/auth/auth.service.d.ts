@@ -1,5 +1,5 @@
 import { Repository } from "typeorm";
-import { AuthDto } from "src/auth/dto/auth-dto";
+import { AuthDto } from "../auth/dto/auth-dto";
 import { authDetails } from "src/auth/entites/auth.entity";
 import { userDetails } from "src/user/entities/user.entity";
 export declare class AuthService {

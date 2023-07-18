@@ -3,7 +3,7 @@ import * as argon2 from 'argon2';
 import {  HttpException, HttpStatus, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import {  Repository } from "typeorm";
-import { AuthDto } from "src/auth/dto/auth-dto";
+import { AuthDto } from "../auth/dto/auth-dto";
 import { authDetails } from "src/auth/entites/auth.entity";
 import { userDetails } from "src/user/entities/user.entity";
 

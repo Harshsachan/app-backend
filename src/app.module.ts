@@ -15,7 +15,6 @@ import { authDetails } from './auth/entites/auth.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -27,9 +26,10 @@ import { AppService } from './app.service';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      playground:true,
+
       autoSchemaFile:true,
-      // autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
+      playground:true,
+      //autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
     }),
     ProductModule,
     OrderModule,

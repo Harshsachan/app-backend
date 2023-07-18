@@ -4,6 +4,7 @@ import { AuthService } from "./auth.service";
 import { AuthDto } from "../auth/dto/auth-dto";
 import { authDetails } from "../auth/entites/auth.entity";
 
+
 @Resolver(of=>authDetails)
 export class AuthResolver{
   constructor(private authService:AuthService){}

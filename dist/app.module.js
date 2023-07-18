@@ -35,8 +35,8 @@ AppModule = __decorate([
             }),
             graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
-                playground: true,
                 autoSchemaFile: true,
+                playground: true,
             }),
             product_module_1.ProductModule,
             order_module_1.OrderModule,
