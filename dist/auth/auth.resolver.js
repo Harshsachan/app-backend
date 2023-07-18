@@ -17,7 +17,8 @@ const graphql_1 = require("@nestjs/graphql");
 const user_entity_1 = require("../user/entities/user.entity");
 const auth_service_1 = require("./auth.service");
 const auth_dto_1 = require("../auth/dto/auth-dto");
-const auth_entity_1 = require("./entites/auth.entity");
+const auth_entity_1 = require("../auth/entites/auth.entity");
+
 let AuthResolver = class AuthResolver {
     constructor(authService) {
         this.authService = authService;

@@ -53,4 +53,3 @@ export class CreateProductInput{
     @Field(() => Category)
     category: Category;
 }
-

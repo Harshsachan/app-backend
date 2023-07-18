@@ -26,6 +26,7 @@ import { AppService } from './app.service';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
+
       autoSchemaFile:true,
       playground:true,
       //autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first

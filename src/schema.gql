@@ -22,7 +22,11 @@ enum Category {
 
 type OrderDetails {
   product_ids: [Int!]!
-  user_email: String!
+  total_price: Int!
+  customer_full_name: String!
+  customer_number: Float!
+  customer_email: String!
+  address: String!
 }
 
 type userDetails {
@@ -49,7 +53,7 @@ type Query {
   findAllProduct: [productDetails!]!
   findProductById(id: Int!): productDetails!
   findProductsByCategory(category: Category!): [productDetails!]!
-  findOrderByUserMail(user_email: String!): [OrderDetails!]!
+  findOrderByUserMail(customer_email: String!): [OrderDetails!]!
   getUserDetailsByMail(email: String!): userDetails
 }
 
@@ -76,7 +80,11 @@ input CreateProductInput {
 
 input CreateOrderInput {
   product_ids: [Int!]!
-  user_email: String!
+  total_price: Int!
+  customer_full_name: String!
+  customer_number: Float!
+  customer_email: String!
+  address: String!
 }
 
 input CreateUserInput {

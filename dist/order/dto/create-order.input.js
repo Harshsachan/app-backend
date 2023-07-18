@@ -13,6 +13,7 @@ exports.CreateOrderInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
+const typeorm_2 = require("typeorm");
 let CreateOrderInput = class CreateOrderInput {
 };
 __decorate([
@@ -23,10 +24,33 @@ __decorate([
 ], CreateOrderInput.prototype, "product_ids", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
+    __metadata("design:type", Number)
+], CreateOrderInput.prototype, "total_price", void 0);
+__decorate([
+    (0, typeorm_2.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], CreateOrderInput.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], CreateOrderInput.prototype, "user_email", void 0);
+], CreateOrderInput.prototype, "customer_full_name", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CreateOrderInput.prototype, "customer_number", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], CreateOrderInput.prototype, "customer_email", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], CreateOrderInput.prototype, "address", void 0);
 CreateOrderInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateOrderInput);

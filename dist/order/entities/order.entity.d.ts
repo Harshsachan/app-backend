@@ -1,5 +1,10 @@
 export declare class OrderDetails {
     _id: string;
     product_ids: number[];
-    user_email: string;
+    total_price: number;
+    created_at: Date;
+    customer_full_name: string;
+    customer_number: number;
+    customer_email: string;
+    address: string;
 }
