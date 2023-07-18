@@ -5,5 +5,5 @@ export declare class OrderResolver {
     private orderService;
     constructor(orderService: OrderService);
     createNewOrder(createOrderInput: CreateOrderInput): Promise<string>;
-    findOrderByUserMail(user_email: string): Promise<OrderDetails[]>;
+    findOrderByUserMail(customer_email: string): Promise<OrderDetails[]>;
 }

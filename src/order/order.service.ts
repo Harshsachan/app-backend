@@ -8,42 +8,35 @@ import { OrderDetails } from "./entities/order.entity";
 export class OrderService{
  constructor(@InjectRepository(OrderDetails) private orderDetailsRepositry:Repository<OrderDetails>) {}
 
-      // createNewOrder(createOrderInput:CreateOrderInput):Promise<OrderDetails>{
-      //     const newOrder = this.orderDetailsRepositry.create(createOrderInput)
 
-      //     return this.orderDetailsRepositry.save(newOrder);
-      // }
-      async createNewOrder(createOrderInput:CreateOrderInput):Promise<void>{
-        try {
-          const newOrder = this.orderDetailsRepositry.create(createOrderInput)
-          await this.orderDetailsRepositry.save(newOrder);
+    //   async createNewOrder(createOrderInput:CreateOrderInput):Promise<void>{
+    //     try {
+    //       const newOrder = this.orderDetailsRepositry.create(createOrderInput)
+    //       await this.orderDetailsRepositry.save(newOrder);
 
-        } catch (error) {
-          throw new Error("HA HA")
-        }
-        
-        
-        
+    //     } catch (error) {
+    //       throw new Error("HA HA")
+    //     }
+    // }
 
-        
+    async createNewOrder(createOrderInput: { product_ids: number[]; total_price: number; customer_full_name: string; customer_number: number; customer_email: string; address: string; }): Promise<void> {
+      try {
+        const { product_ids, ...rest } = createOrderInput;
+        await Promise.all(
+          product_ids.map(async product_id => {
+            const newOrder = this.orderDetailsRepositry.create({ ...rest, product_ids: [product_id] });
+            await this.orderDetailsRepositry.save(newOrder);
+          })
+        );
+      } catch (error) {
+        throw new Error("Failed to create orders");
+      }
     }
+    
+    
 
-      // async createNewOrder(createOrderInput: CreateOrderInput): Promise<OrderDetails> {
-      //   const { user_email, product_ids } = createOrderInput;
-      
-      //   const newOrders = product_ids.map(productId =>
-      //     this.orderDetailsRepositry.create({
-      //       user_email,
-      //       product_id: productId,
-      //     }),
-      //   );
-      
-      //   const savedOrders = await this.orderDetailsRepositry.save(newOrders);
-      //   return savedOrders[0];
-      // }
-
-      findOrderByUserMail(user_email:string):Promise<OrderDetails[]>{
-        return this.orderDetailsRepositry.find({where:{user_email}})
+      findOrderByUserMail(customer_email:string):Promise<OrderDetails[]>{
+        return this.orderDetailsRepositry.find({where:{customer_email}})
       }
 
       // async findOrderById(id:number):Promise<OrderDetails>{

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderDetails = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("typeorm");
+const typeorm_2 = require("typeorm");
 let OrderDetails = class OrderDetails {
 };
 __decorate([
@@ -25,9 +26,34 @@ __decorate([
 ], OrderDetails.prototype, "product_ids", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
+    __metadata("design:type", Number)
+], OrderDetails.prototype, "total_price", void 0);
+__decorate([
+    (0, typeorm_2.CreateDateColumn)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Date)
+], OrderDetails.prototype, "created_at", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
-], OrderDetails.prototype, "user_email", void 0);
+], OrderDetails.prototype, "customer_full_name", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], OrderDetails.prototype, "customer_number", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], OrderDetails.prototype, "customer_email", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", String)
+], OrderDetails.prototype, "address", void 0);
 OrderDetails = __decorate([
     (0, typeorm_1.Entity)(),
     (0, graphql_1.ObjectType)()

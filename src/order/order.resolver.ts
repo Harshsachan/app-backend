@@ -7,40 +7,40 @@ import { OrderService } from "./order.service";
 export class OrderResolver{
     constructor(private orderService:OrderService){}
 
-    // @Query(returns=>[OrderDetails])
-    // findAllOrder():Promise<OrderDetails[]>{
-    //     return this.orderService.findAllOrder();
+    
+    // @Mutation(returns=>String)
+    // async createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<string>{
+    //   try{
+    //      await this.orderService.createNewOrder(createOrderInput);
+    //      return("Order Placed");
+    //    }
+    //    catch(e){
+    //      throw new Error("HA HA");
+    //    }
     // }
+    @Mutation(returns => String)
+async createNewOrder(@Args('createOrderInput') createOrderInput: CreateOrderInput): Promise<string> {
+  try {
+    const { product_ids, ...rest } = createOrderInput;
+    await Promise.all(
+      product_ids.map(async product_id => {
+        const orderInput = { ...rest, product_ids: [product_id] };
+        await this.orderService.createNewOrder(orderInput);
+      })
+    );
 
-    // @Query(returns=>OrderDetails)
-    // findOrderById(@Args('id',{type:()=>Int}) id:number):Promise<OrderDetails>{
-    //   return this.orderService.findOrderById(id);
-    // }
+    return "Orders Placed";
+  } catch (e) {
+    throw new Error("Failed to place orders");
+  }
+}
 
-    // @Mutation(returns=>OrderDetails)
-    // createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<OrderDetails>{
-    //   return this.orderService.createNewOrder(createOrderInput);
-    // }
-    @Mutation(returns=>String)
-    async createNewOrder(@Args('createOrderInput') createOrderInput:CreateOrderInput):Promise<string>{
-      try{
-         await this.orderService.createNewOrder(createOrderInput);
-         return("Order Placed");
-       }
-       catch(e){
-         throw new Error("HA HA");
-       }
-    }
+    
 
-//     @Mutation(returns => OrderDetails)
-//   async createNewOrder(@Args('createOrderInput') createOrderInput: CreateOrderInput,
-// ): Promise<OrderDetails> {
-//   return this.orderService.createNewOrder(createOrderInput);
-// }
 
     @Query(returns=>[OrderDetails])
-    findOrderByUserMail(@Args('user_email') user_email:string):Promise<OrderDetails[]>{
-      return this.orderService.findOrderByUserMail(user_email);
+    findOrderByUserMail(@Args('customer_email') customer_email:string):Promise<OrderDetails[]>{
+      return this.orderService.findOrderByUserMail(customer_email);
     }
 
 }

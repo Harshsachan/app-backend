@@ -11,6 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderResolver = void 0;
 const graphql_1 = require("@nestjs/graphql");
@@ -23,15 +34,19 @@ let OrderResolver = class OrderResolver {
     }
     async createNewOrder(createOrderInput) {
         try {
-            await this.orderService.createNewOrder(createOrderInput);
-            return ("Order Placed");
+            const { product_ids } = createOrderInput, rest = __rest(createOrderInput, ["product_ids"]);
+            await Promise.all(product_ids.map(async (product_id) => {
+                const orderInput = Object.assign(Object.assign({}, rest), { product_ids: [product_id] });
+                await this.orderService.createNewOrder(orderInput);
+            }));
+            return "Orders Placed";
         }
         catch (e) {
-            throw new Error("HA HA");
+            throw new Error("Failed to place orders");
         }
     }
-    findOrderByUserMail(user_email) {
-        return this.orderService.findOrderByUserMail(user_email);
+    findOrderByUserMail(customer_email) {
+        return this.orderService.findOrderByUserMail(customer_email);
     }
 };
 __decorate([
@@ -43,7 +58,7 @@ __decorate([
 ], OrderResolver.prototype, "createNewOrder", null);
 __decorate([
     (0, graphql_1.Query)(returns => [order_entity_1.OrderDetails]),
-    __param(0, (0, graphql_1.Args)('user_email')),
+    __param(0, (0, graphql_1.Args)('customer_email')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
