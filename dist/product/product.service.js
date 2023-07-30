@@ -17,28 +17,42 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const product_entity_1 = require("./entities/product.entity");
+const rr_service_1 = require("../rating&review/rr.service");
 let ProductService = class ProductService {
-    constructor(productDetailsRepositry) {
+    constructor(productDetailsRepositry, rrService) {
         this.productDetailsRepositry = productDetailsRepositry;
+        this.rrService = rrService;
     }
     async createNewProduct(createNewProductInput) {
         const newProduct = this.productDetailsRepositry.create(createNewProductInput);
         return this.productDetailsRepositry.save(newProduct);
     }
     async findAllProduct() {
-        return this.productDetailsRepositry.find();
+        const products = this.productDetailsRepositry.find();
+        for (const product of await products) {
+            product.averageRating = await this.rrService.getAverageRatingByProductId(product.id);
+        }
+        return products;
     }
     async findProductByCategory(category) {
-        return this.productDetailsRepositry.find({ where: { category } });
+        const products = this.productDetailsRepositry.find({ where: { category } });
+        for (const product of await products) {
+            product.averageRating = await this.rrService.getAverageRatingByProductId(product.id);
+        }
+        return products;
     }
     async findProductById(id) {
-        return this.productDetailsRepositry.findOneOrFail({ where: { id } });
+        const singleProduct = this.productDetailsRepositry.findOneOrFail({ where: { id } });
+        const averageRating = await this.rrService.getAverageRatingByProductId((await singleProduct).id);
+        (await singleProduct).averageRating = averageRating;
+        return singleProduct;
     }
 };
 ProductService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.productDetails)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        rr_service_1.RrService])
 ], ProductService);
 exports.ProductService = ProductService;
 //# sourceMappingURL=product.service.js.map

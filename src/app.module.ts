@@ -14,6 +14,8 @@ import { AuthModule } from './auth/auth.module';
 import { authDetails } from './auth/entites/auth.entity';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { RrModule } from './rating&review/rr.module';
+import { RrDetails } from './rating&review/entities/createRR.entity';
 
 @Module({
   imports: [
@@ -22,19 +24,20 @@ import { AppService } from './app.service';
       url:'mongodb+srv://harshitsachan:8400370072@sneaker.svqyffb.mongodb.net/?retryWrites=true&w=majority',
       synchronize:true,
       useUnifiedTopology:true,
-      entities:[productDetails,OrderDetails,userDetails,authDetails]
+      entities:[productDetails,OrderDetails,userDetails,authDetails,RrDetails]
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-
-      autoSchemaFile:true,
+      //TODO
+      //autoSchemaFile:true,
       playground:true,
-      //autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
     }),
     ProductModule,
     OrderModule,
     UserModule,
-    AuthModule
+    AuthModule,
+    RrModule
   ],
   controllers: [AppController],
   providers: [AppService],

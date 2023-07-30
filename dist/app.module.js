@@ -10,6 +10,7 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const graphql_1 = require("@nestjs/graphql");
 const apollo_1 = require("@nestjs/apollo");
+const path_1 = require("path");
 const typeorm_1 = require("@nestjs/typeorm");
 const product_module_1 = require("./product/product.module");
 const product_entity_1 = require("./product/entities/product.entity");
@@ -21,6 +22,8 @@ const auth_module_1 = require("./auth/auth.module");
 const auth_entity_1 = require("./auth/entites/auth.entity");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const rr_module_1 = require("./rating&review/rr.module");
+const createRR_entity_1 = require("./rating&review/entities/createRR.entity");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -31,17 +34,18 @@ AppModule = __decorate([
                 url: 'mongodb+srv://harshitsachan:8400370072@sneaker.svqyffb.mongodb.net/?retryWrites=true&w=majority',
                 synchronize: true,
                 useUnifiedTopology: true,
-                entities: [product_entity_1.productDetails, order_entity_1.OrderDetails, user_entity_1.userDetails, auth_entity_1.authDetails]
+                entities: [product_entity_1.productDetails, order_entity_1.OrderDetails, user_entity_1.userDetails, auth_entity_1.authDetails, createRR_entity_1.RrDetails]
             }),
             graphql_1.GraphQLModule.forRoot({
                 driver: apollo_1.ApolloDriver,
-                autoSchemaFile: true,
                 playground: true,
+                autoSchemaFile: (0, path_1.join)(process.cwd(), 'src/schema.gql'),
             }),
             product_module_1.ProductModule,
             order_module_1.OrderModule,
             user_module_1.UserModule,
-            auth_module_1.AuthModule
+            auth_module_1.AuthModule,
+            rr_module_1.RrModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

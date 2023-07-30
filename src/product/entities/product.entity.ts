@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from "@nestjs/graphql";
+import { Field, Float, ID, Int, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, Index, ObjectIdColumn, PrimaryGeneratedColumn } from "typeorm";
 
 
@@ -47,4 +47,8 @@ export class productDetails{
     @Column()
     @Field(()=>Category)
     category:Category;
+
+    @Field(type => Float, { nullable: true }) // Add averageRating field
+    averageRating?: number;
+
 }

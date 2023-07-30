@@ -10,4 +10,5 @@ export declare class productDetails {
     price: number;
     seller: string;
     category: Category;
+    averageRating?: number;
 }

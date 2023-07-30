@@ -2,7 +2,6 @@ import { userDetails } from "src/user/entities/user.entity";
 import { AuthService } from "./auth.service";
 import { AuthDto } from "../auth/dto/auth-dto";
 import { authDetails } from "../auth/entites/auth.entity";
-
 export declare class AuthResolver {
     private authService;
     constructor(authService: AuthService);
