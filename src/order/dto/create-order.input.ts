@@ -5,44 +5,42 @@ import { CreateDateColumn } from 'typeorm';
 
 @InputType()
 export class CreateOrderInput {
-
-  @Column()
-  @Field(type => [Int])
+  @Field(() => [Product])
   @IsNotEmpty()
-  product_ids: number[];
-
-  @Column()
-  @Field(type=>Int)
-  total_price: number;
+  products: Product[];
 
   @CreateDateColumn()
   created_at: Date;
 
-  @Column()
   @Field()
-  customer_full_name :string;
+  @IsNotEmpty()
+  customer_full_name: string;
 
-
-  @Column()
-  @Field({nullable:true})
-  coupon :string;
-
-  @Column()
   @Field()
-  customer_number:number;
+  @IsNotEmpty()
+  customer_number: number;
 
-  @Column()
   @Field()
-  customer_email:string;
-  
-  @Column()
+  @IsNotEmpty()
+  customer_email: string;
+
   @Field()
-  address:string
+  @IsNotEmpty()
+  address: string;
+}
 
 
-  // @Column()
-  // @IsNotEmpty()
-  // @Field()
-  // user_email:string;
-  
+@InputType()
+class Product {
+  @Field(() => Int)
+  @IsNotEmpty()
+  id: number;
+
+  @Field(() => Int)
+  @IsNotEmpty()
+  price: number;
+
+  @Field()
+  @IsNotEmpty()
+  size: string;
 }

@@ -13,51 +13,59 @@ exports.CreateOrderInput = void 0;
 const graphql_1 = require("@nestjs/graphql");
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
-const typeorm_2 = require("typeorm");
 let CreateOrderInput = class CreateOrderInput {
 };
 __decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => [graphql_1.Int]),
+    (0, graphql_1.Field)(() => [Product]),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Array)
-], CreateOrderInput.prototype, "product_ids", void 0);
+], CreateOrderInput.prototype, "products", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)(type => graphql_1.Int),
-    __metadata("design:type", Number)
-], CreateOrderInput.prototype, "total_price", void 0);
-__decorate([
-    (0, typeorm_2.CreateDateColumn)(),
+    (0, typeorm_1.CreateDateColumn)(),
     __metadata("design:type", Date)
 ], CreateOrderInput.prototype, "created_at", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateOrderInput.prototype, "customer_full_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
-    (0, graphql_1.Field)({ nullable: true }),
-    __metadata("design:type", String)
-], CreateOrderInput.prototype, "coupon", void 0);
-__decorate([
-    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], CreateOrderInput.prototype, "customer_number", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateOrderInput.prototype, "customer_email", void 0);
 __decorate([
-    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
+    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateOrderInput.prototype, "address", void 0);
 CreateOrderInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateOrderInput);
 exports.CreateOrderInput = CreateOrderInput;
+let Product = class Product {
+};
+__decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], Product.prototype, "id", void 0);
+__decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", Number)
+], Product.prototype, "price", void 0);
+__decorate([
+    (0, graphql_1.Field)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], Product.prototype, "size", void 0);
+Product = __decorate([
+    (0, graphql_1.InputType)()
+], Product);
 //# sourceMappingURL=create-order.input.js.map

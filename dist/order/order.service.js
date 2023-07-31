@@ -34,14 +34,14 @@ let OrderService = class OrderService {
     }
     async createNewOrder(createOrderInput) {
         try {
-            const { product_ids } = createOrderInput, rest = __rest(createOrderInput, ["product_ids"]);
-            await Promise.all(product_ids.map(async (product_id) => {
-                const newOrder = this.orderDetailsRepositry.create(Object.assign(Object.assign({}, rest), { product_ids: [product_id] }));
+            const { products } = createOrderInput, rest = __rest(createOrderInput, ["products"]);
+            await Promise.all(products.map(async (product) => {
+                const newOrder = this.orderDetailsRepositry.create(Object.assign(Object.assign({}, rest), { products: [product] }));
                 await this.orderDetailsRepositry.save(newOrder);
             }));
         }
         catch (error) {
-            throw new Error("Failed to create orders");
+            throw new Error('Failed to create orders');
         }
     }
     findOrderByUserMail(customer_email) {
