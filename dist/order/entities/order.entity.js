@@ -41,6 +41,11 @@ __decorate([
 ], OrderDetails.prototype, "customer_full_name", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], OrderDetails.prototype, "coupon", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", Number)
 ], OrderDetails.prototype, "customer_number", void 0);

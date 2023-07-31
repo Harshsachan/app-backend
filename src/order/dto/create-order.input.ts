@@ -22,6 +22,11 @@ export class CreateOrderInput {
   @Field()
   customer_full_name :string;
 
+
+  @Column()
+  @Field({nullable:true})
+  coupon :string;
+
   @Column()
   @Field()
   customer_number:number;
