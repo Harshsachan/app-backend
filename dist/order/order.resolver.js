@@ -34,9 +34,9 @@ let OrderResolver = class OrderResolver {
     }
     async createNewOrder(createOrderInput) {
         try {
-            const { products } = createOrderInput, rest = __rest(createOrderInput, ["products"]);
-            await Promise.all(products.map(async (product) => {
-                const orderInput = Object.assign(Object.assign({}, rest), { products: [product] });
+            const { product_ids } = createOrderInput, rest = __rest(createOrderInput, ["product_ids"]);
+            await Promise.all(product_ids.map(async (product_id) => {
+                const orderInput = Object.assign(Object.assign({}, rest), { product_ids: [product_id] });
                 await this.orderService.createNewOrder(orderInput);
             }));
             return "Orders Placed";

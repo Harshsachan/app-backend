@@ -17,14 +17,18 @@ let OrderDetails = class OrderDetails {
 };
 __decorate([
     (0, typeorm_1.ObjectIdColumn)(),
-    (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], OrderDetails.prototype, "_id", void 0);
 __decorate([
-    (0, typeorm_1.Column)('simple-array'),
-    (0, graphql_1.Field)(() => [Product_det]),
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => [graphql_1.Int]),
     __metadata("design:type", Array)
-], OrderDetails.prototype, "products", void 0);
+], OrderDetails.prototype, "product_ids", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)(type => graphql_1.Int),
+    __metadata("design:type", Number)
+], OrderDetails.prototype, "total_price", void 0);
 __decorate([
     (0, typeorm_2.CreateDateColumn)(),
     (0, graphql_1.Field)(),
@@ -36,7 +40,7 @@ __decorate([
     __metadata("design:type", String)
 ], OrderDetails.prototype, "customer_full_name", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", String)
 ], OrderDetails.prototype, "coupon", void 0);
@@ -60,21 +64,4 @@ OrderDetails = __decorate([
     (0, graphql_1.ObjectType)()
 ], OrderDetails);
 exports.OrderDetails = OrderDetails;
-let Product_det = class Product_det {
-};
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int),
-    __metadata("design:type", Number)
-], Product_det.prototype, "id", void 0);
-__decorate([
-    (0, graphql_1.Field)(() => graphql_1.Int),
-    __metadata("design:type", Number)
-], Product_det.prototype, "price", void 0);
-__decorate([
-    (0, graphql_1.Field)(),
-    __metadata("design:type", String)
-], Product_det.prototype, "size", void 0);
-Product_det = __decorate([
-    (0, graphql_1.ObjectType)()
-], Product_det);
 //# sourceMappingURL=order.entity.js.map

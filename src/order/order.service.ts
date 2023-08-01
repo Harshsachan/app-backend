@@ -19,25 +19,19 @@ export class OrderService{
     //     }
     // }
 
-    async createNewOrder(createOrderInput: CreateOrderInput): Promise<void> {
+    async createNewOrder(createOrderInput: { product_ids: number[]; total_price: number; customer_full_name: string; customer_number: number; customer_email: string; address: string; }): Promise<void> {
       try {
-        const { products, ...rest } = createOrderInput;
+        const { product_ids, ...rest } = createOrderInput;
         await Promise.all(
-          products.map(async (product) => {
-            const newOrder = this.orderDetailsRepositry.create({
-              ...rest,
-              products: [product], // Here, we create an array with a single product
-          
-            });
+          product_ids.map(async product_id => {
+            const newOrder = this.orderDetailsRepositry.create({ ...rest, product_ids: [product_id] });
             await this.orderDetailsRepositry.save(newOrder);
-          }),
+          })
         );
       } catch (error) {
-        throw new Error('Failed to create orders');
+        throw new Error("Failed to create orders");
       }
     }
-    
-    
     
     
 

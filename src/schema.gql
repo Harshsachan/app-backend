@@ -30,8 +30,8 @@ enum Category {
 }
 
 type OrderDetails {
-  _id: String!
-  products: [Product_det!]!
+  product_ids: [Int!]!
+  total_price: Int!
   created_at: DateTime!
   customer_full_name: String!
   coupon: String
@@ -44,12 +44,6 @@ type OrderDetails {
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
-
-type Product_det {
-  id: Int!
-  price: Int!
-  size: String!
-}
 
 type userDetails {
   uhid: String!
@@ -112,17 +106,13 @@ input CreateRating {
 }
 
 input CreateOrderInput {
-  products: [Product!]!
+  product_ids: [Int!]!
+  total_price: Int!
   customer_full_name: String!
+  coupon: String
   customer_number: Float!
   customer_email: String!
   address: String!
-}
-
-input Product {
-  id: Int!
-  price: Int!
-  size: String!
 }
 
 input CreateUserInput {

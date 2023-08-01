@@ -21,10 +21,10 @@ export class OrderResolver{
     @Mutation(returns => String)
 async createNewOrder(@Args('createOrderInput') createOrderInput: CreateOrderInput): Promise<string> {
   try {
-    const { products, ...rest } = createOrderInput;
+    const { product_ids, ...rest } = createOrderInput;
     await Promise.all(
-      products.map(async product => {
-        const orderInput = { ...rest, products: [product] };
+      product_ids.map(async product_id => {
+        const orderInput = { ...rest, product_ids: [product_id] };
         await this.orderService.createNewOrder(orderInput);
       })
     );
@@ -34,7 +34,6 @@ async createNewOrder(@Args('createOrderInput') createOrderInput: CreateOrderInpu
     throw new Error("Failed to place orders");
   }
 }
-
 
     
 
