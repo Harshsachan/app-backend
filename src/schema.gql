@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type RrDetails {
+  rating: Float
+  review: String
+  customer_full_name: String!
+  customer_email: String!
+  product_ids: Int!
+}
+
 type productDetails {
   id: Int!
   name: String!
@@ -12,6 +20,7 @@ type productDetails {
   price: Int!
   seller: String!
   category: Category!
+  averageRating: Float
 }
 
 enum Category {
@@ -23,11 +32,19 @@ enum Category {
 type OrderDetails {
   product_ids: [Int!]!
   total_price: Int!
+  created_at: DateTime!
   customer_full_name: String!
+  coupon: String
   customer_number: Float!
   customer_email: String!
   address: String!
+  size: Float!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type userDetails {
   uhid: String!
@@ -41,6 +58,7 @@ type userDetails {
   city: String!
   state: String!
   pincode: Int!
+  size: Float!
 }
 
 type authDetails {
@@ -53,12 +71,15 @@ type Query {
   findAllProduct: [productDetails!]!
   findProductById(id: Int!): productDetails!
   findProductsByCategory(category: Category!): [productDetails!]!
+  findReviewsAndRatingsByProductId(product_id: Float!): [RrDetails!]!
+  findAvgByProductId(product_id: Float!): Float!
   findOrderByUserMail(customer_email: String!): [OrderDetails!]!
   getUserDetailsByMail(email: String!): userDetails
 }
 
 type Mutation {
   createProduct(createProduct: CreateProductInput!): productDetails!
+  createRatingAndReview(createRating: CreateRating!): RrDetails!
   createNewOrder(createOrderInput: CreateOrderInput!): String!
   createUser(createUserInput: CreateUserInput!): userDetails!
   updateUserInfo(updateUserInput: UpdateUserInput!): userDetails!
@@ -78,13 +99,23 @@ input CreateProductInput {
   category: Category!
 }
 
+input CreateRating {
+  rating: Float = 1
+  review: String
+  customer_full_name: String!
+  customer_email: String!
+  product_ids: Int!
+}
+
 input CreateOrderInput {
   product_ids: [Int!]!
   total_price: Int!
   customer_full_name: String!
+  coupon: String
   customer_number: Float!
   customer_email: String!
   address: String!
+  size: Float!
 }
 
 input CreateUserInput {
@@ -98,6 +129,7 @@ input CreateUserInput {
   city: String!
   state: String!
   pincode: Int!
+  size: Float
 }
 
 input UpdateUserInput {
@@ -111,6 +143,7 @@ input UpdateUserInput {
   city: String
   state: String
   pincode: Float
+  size: Float
 }
 
 input AuthDto {

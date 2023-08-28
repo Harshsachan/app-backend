@@ -39,25 +39,16 @@ export class AuthService{
 
   async logIn(authDto:AuthDto):Promise<userDetails>{
     const {email,password}= authDto;
-
-
     const user = await this.authDetailsRepositry.findOne({where:{email}});
-
     if(!user)
     {
       throw new NotFoundException('This Email is not registered with  us')
     }
-    
-
     // verify the password using argon2
     const isPasswordValid = await argon2.verify((await user).password,password)
-
-
     if(!isPasswordValid){
       throw new UnauthorizedException('Incorrect Password'); 
     }
-
     return this.userDetailsRepository.findOneOrFail({where:{email}});
-
   }
 }

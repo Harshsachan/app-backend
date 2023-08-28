@@ -78,6 +78,11 @@ __decorate([
     __metadata("design:type", Number)
 ], userDetails.prototype, "pincode", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ length: 2 }),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], userDetails.prototype, "size", void 0);
+__decorate([
     (0, typeorm_1.BeforeInsert)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),

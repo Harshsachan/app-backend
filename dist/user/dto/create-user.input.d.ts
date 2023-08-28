@@ -10,4 +10,5 @@ export declare class CreateUserInput {
     city: string;
     state: string;
     pincode: number;
+    size: number;
 }

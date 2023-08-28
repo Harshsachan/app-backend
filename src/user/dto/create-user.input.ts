@@ -62,4 +62,9 @@ export class CreateUserInput {
   @Field(type=>Int)
   pincode: number;
   
+
+  @IsNumber()
+  @Column({ length: 2 })
+  @Field({ nullable: true })
+  size :number;
 }

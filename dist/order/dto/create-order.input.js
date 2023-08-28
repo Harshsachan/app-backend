@@ -38,6 +38,11 @@ __decorate([
 ], CreateOrderInput.prototype, "customer_full_name", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", String)
+], CreateOrderInput.prototype, "coupon", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
     (0, graphql_1.Field)(),
     __metadata("design:type", Number)
 ], CreateOrderInput.prototype, "customer_number", void 0);
@@ -51,6 +56,11 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], CreateOrderInput.prototype, "address", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ length: 2 }),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CreateOrderInput.prototype, "size", void 0);
 CreateOrderInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateOrderInput);

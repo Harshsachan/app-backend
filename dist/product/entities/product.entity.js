@@ -65,6 +65,10 @@ __decorate([
     (0, graphql_1.Field)(() => category_enum_1.Category),
     __metadata("design:type", String)
 ], productDetails.prototype, "category", void 0);
+__decorate([
+    (0, graphql_1.Field)(type => graphql_1.Float, { nullable: true }),
+    __metadata("design:type", Number)
+], productDetails.prototype, "averageRating", void 0);
 productDetails = __decorate([
     (0, typeorm_1.Entity)(),
     (0, graphql_1.ObjectType)()
