@@ -56,6 +56,11 @@ __decorate([
     (0, graphql_1.Field)(),
     __metadata("design:type", String)
 ], CreateOrderInput.prototype, "address", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ length: 2 }),
+    (0, graphql_1.Field)(),
+    __metadata("design:type", Number)
+], CreateOrderInput.prototype, "size", void 0);
 CreateOrderInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateOrderInput);

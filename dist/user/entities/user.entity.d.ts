@@ -11,5 +11,6 @@ export declare class userDetails {
     city: string;
     state: string;
     pincode: number;
+    size: number;
     generateUHID(): void;
 }

@@ -38,6 +38,7 @@ type OrderDetails {
   customer_number: Float!
   customer_email: String!
   address: String!
+  size: Float!
 }
 
 """
@@ -57,6 +58,7 @@ type userDetails {
   city: String!
   state: String!
   pincode: Int!
+  size: Float!
 }
 
 type authDetails {
@@ -113,6 +115,7 @@ input CreateOrderInput {
   customer_number: Float!
   customer_email: String!
   address: String!
+  size: Float!
 }
 
 input CreateUserInput {
@@ -126,6 +129,7 @@ input CreateUserInput {
   city: String!
   state: String!
   pincode: Int!
+  size: Float
 }
 
 input UpdateUserInput {
@@ -139,6 +143,7 @@ input UpdateUserInput {
   city: String
   state: String
   pincode: Float
+  size: Float
 }
 
 input AuthDto {

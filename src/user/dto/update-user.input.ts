@@ -20,7 +20,7 @@ export class UpdateUserInput extends PartialType(CreateUserInput) {
   l_name :string;
 
   @IsNumber()
-  @Column({ length: 20 })
+  @Column({ length: 2})
   @Field({ nullable: true })
   number :number;
   
@@ -48,6 +48,12 @@ export class UpdateUserInput extends PartialType(CreateUserInput) {
   @Column()
   @Field({ nullable: true })
   pincode: number;
+
+  @IsNumber()
+  @Column({ length: 2 })
+  @Field({ nullable: true })
+  size :number;
+  
   
 }
 

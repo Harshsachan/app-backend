@@ -37,7 +37,11 @@ export class CreateOrderInput {
   
   @Column()
   @Field()
-  address:string
+  address:string;
+
+  @Column({ length: 2 })
+  @Field()
+  size: number;
 
 
   // @Column()

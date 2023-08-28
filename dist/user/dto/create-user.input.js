@@ -81,6 +81,12 @@ __decorate([
     (0, graphql_1.Field)(type => graphql_1.Int),
     __metadata("design:type", Number)
 ], CreateUserInput.prototype, "pincode", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.Column)({ length: 2 }),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Number)
+], CreateUserInput.prototype, "size", void 0);
 CreateUserInput = __decorate([
     (0, graphql_1.InputType)()
 ], CreateUserInput);

@@ -54,6 +54,10 @@ export class userDetails {
   @Field(type=>Int)
   pincode: number;
 
+  @Column({ length: 2 })
+  @Field()
+  size: number;
+
   @BeforeInsert()
   generateUHID() {
     // Generate the UHID here (e.g., using a UUID library or any custom logic)

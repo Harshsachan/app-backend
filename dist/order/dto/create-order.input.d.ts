@@ -7,4 +7,5 @@ export declare class CreateOrderInput {
     customer_number: number;
     customer_email: string;
     address: string;
+    size: number;
 }

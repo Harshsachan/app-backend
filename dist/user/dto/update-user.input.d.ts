@@ -11,5 +11,6 @@ export declare class UpdateUserInput extends UpdateUserInput_base {
     city: string;
     state: string;
     pincode: number;
+    size: number;
 }
 export {};

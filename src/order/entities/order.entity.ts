@@ -39,7 +39,11 @@ export class OrderDetails {
 
   @Column()
   @Field()
-  address:string
+  address:string;
+  
+  @Column({ length: 2 })
+  @Field()
+  size: number;
 
 }
 

@@ -34,7 +34,7 @@ __decorate([
 ], UpdateUserInput.prototype, "l_name", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
-    (0, typeorm_1.Column)({ length: 20 }),
+    (0, typeorm_1.Column)({ length: 2 }),
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], UpdateUserInput.prototype, "number", void 0);
@@ -69,6 +69,12 @@ __decorate([
     (0, graphql_1.Field)({ nullable: true }),
     __metadata("design:type", Number)
 ], UpdateUserInput.prototype, "pincode", void 0);
+__decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.Column)({ length: 2 }),
+    (0, graphql_1.Field)({ nullable: true }),
+    __metadata("design:type", Number)
+], UpdateUserInput.prototype, "size", void 0);
 UpdateUserInput = __decorate([
     (0, graphql_1.InputType)()
 ], UpdateUserInput);
