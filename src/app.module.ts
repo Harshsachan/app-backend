@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join } from 'path';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ProductModule } from './product/product.module';
@@ -16,12 +15,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RrModule } from './rating&review/rr.module';
 import { RrDetails } from './rating&review/entities/createRR.entity';
-
+import * as dotenv from 'dotenv';
+dotenv.config();
 @Module({
   imports: [
+  
     TypeOrmModule.forRoot({
       type:'mongodb',
-      url:'mongodb+srv://harshitsachan:8400370072@sneaker.svqyffb.mongodb.net/?retryWrites=true&w=majority',
+      url: process.env.MONGODB_URI,
       synchronize:true,
       useUnifiedTopology:true,
       entities:[productDetails,OrderDetails,userDetails,authDetails,RrDetails]
@@ -29,9 +30,9 @@ import { RrDetails } from './rating&review/entities/createRR.entity';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       //TODO
-      //autoSchemaFile:true,
+      autoSchemaFile:true,
       playground:true,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
+      //autoSchemaFile: join(process.cwd(), 'src/schema.gql'),// code first
     }),
     ProductModule,
     OrderModule,
