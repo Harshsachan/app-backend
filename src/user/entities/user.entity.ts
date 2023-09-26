@@ -12,8 +12,6 @@ export class userDetails {
   @Field()
   uhid: string;
   
-  
-
   @Column()
   @Field()
   f_name: string;

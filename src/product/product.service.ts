@@ -12,7 +12,6 @@ import { RrService } from "../rating&review/rr.service";
 export class ProductService{
     constructor(
         @InjectRepository(productDetails) private productDetailsRepositry:Repository<productDetails>,
-        // @InjectRepository(RrDetails) private rrDetailsRepositry:Repository<RrDetails>,
         private  rrService: RrService,
     ){}
 
@@ -22,14 +21,24 @@ export class ProductService{
         return this.productDetailsRepositry.save(newProduct);
     }
 
-    async findAllProduct():Promise<productDetails[]>{
-        const products= this.productDetailsRepositry.find()
-        for (const product of await products) {
-            product.averageRating = await this.rrService.getAverageRatingByProductId(product.id);
-          }
+    async findAllProduct(): Promise<productDetails[]> {
+        const products = await this.productDetailsRepositry.find({});
+        const productIds = products.map((product) => product.id);
       
-          return products;
-    }
+        const ratingPromises = productIds.map((productId) =>
+          this.rrService.getAverageRatingByProductId(productId)
+        );
+      
+        const ratings = await Promise.all(ratingPromises);
+      
+        // Assign the ratings to the products
+        for (let i = 0; i < products.length; i++) {
+          products[i].averageRating = ratings[i];
+        }
+      
+        return products;
+      }
+      
 
     async findProductByCategory(category:Category):Promise<productDetails[]>{
         const products=this.productDetailsRepositry.find({where:{category}})
